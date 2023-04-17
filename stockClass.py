@@ -1,6 +1,4 @@
-# Sebastian Janice - 4/3/2023 - CSE215
 
-# Stock Class, displays key factors of stock
 class Stock:
     def __init__(self, symbol, name, shares):
         self.symbol = symbol
