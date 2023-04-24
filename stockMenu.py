@@ -140,12 +140,54 @@ def investment_type(stock_list):
 
 # Function to create stock chart
 def display_stock_chart(stock_list, symbol):
-    print("This method is under construction")
+    print("\n--Calling Stock Chart--")
+
+    date = []
+    price = []
+    volume = []
+
+    company = ""
+
+    for stock in stock_list:
+        if stock.symbol == symbol:
+            company = stock.name
+
+            for dailyData in stock.DataList:
+                date.append(dailyData.date)
+                price.append(dailyData.close)
+                volume.append(dailyData.volume)
+
+    plt.plot(date,price)
+    plt.xlabel('Date')
+    plt.ylabel('Price')
+    plt.title(company)
+    plt.show()
+
 
 
 # Display Chart
 def display_chart(stock_list):
-    print("This method is under construction")
+    print("\n--Stock Chart--")
+    print("Stock list: [", end="")
+
+    for stock in stock_list:
+        print(stock.symbol + "",end="")
+    print("]")
+
+    userSymbol = input("Please Enter Symbol: ").upper()
+
+    found = False
+
+    for stock in stock_list:
+        if stock.symbol == userSymbol:
+            found = True
+            currentStock = stock
+
+    if found == True:
+        display_stock_chart(stock_list, userSymbol)
+    else:
+        print("Symbol was not Found")
+        _ = input("Press Enter to Continue ***")
 
 
 # Get price and volume history from Yahoo! Finance using CSV import.
