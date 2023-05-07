@@ -247,7 +247,7 @@ def display_report(stock_list):
             if daily_data.volume > highVolume:
                 highVolume = daily_data.volume
 
-            priceChange = highPrice - lowPrice
+            priceChange = lowPrice - highPrice
 
         if count > 0:
             print("--Summary--")
